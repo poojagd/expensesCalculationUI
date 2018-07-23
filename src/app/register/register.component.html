@@ -1,0 +1,38 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<html>
+  <title> Registration of user.</title>
+  <h1 style="text-align:center; color:darkslateblue;" >
+  User information.
+  </h1>
+  <body>
+      <div style="text-align:center">
+  <form>
+    <div class="form-group">
+    <label for="firstName">First name:</label>
+    <input [(ngModel)]="ngFirstName" name="firstName" type="text">
+    <br><br>
+    </div>
+    <div class="form-group">
+      <label for="lastName"> Last Name:</label>
+      <input [(ngModel)]="ngLastName" name="lastName" type="text">
+      <br><br>
+    </div>
+
+    <div class="form-group">
+      <label for="emailId"> Email-Id:</label>
+      <input [(ngModel)]="ngEmailId" email name="emailId" required>
+      <br><br>
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input [(ngModel)]="ngPassword" name="password" type="password" required minlength = "2">
+      <br><br>
+    </div>
+
+  <button class="btn btn-primary" (click)="onClick()"> Register </button>
+  </form>
+</div>
+</body>
+  
+  </html>
