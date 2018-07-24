@@ -1,12 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { User } from './user';
 
-export interface User {
-  firstName : String;
-  lastName : String;
-  emailId : String;
-  password : String;
-}
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -17,10 +12,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  ngFirstName : String;
-  ngLastName: String;
-  ngEmailId : String;
-  ngPassword : String;
+  firstName : String;
+  lastName: String;
+  emailId : String;
+  password : String;
   user = {} as User;
  
   private apiUrl  : string = "http://localhost:8080/users";
@@ -29,10 +24,10 @@ export class RegisterComponent implements OnInit {
   }
   
   onClick(){
-    this.user.firstName = this.ngFirstName;
-    this.user.lastName = this.ngLastName;
-    this.user.emailId = this.ngEmailId; 
-    this.user.password = this.ngPassword;
+    this.user.firstName = this.firstName;
+    this.user.lastName = this.lastName;
+    this.user.emailId = this.emailId; 
+    this.user.password = this.password;
         return this.http.post(this.apiUrl,this.user)
        .subscribe(
         res => {

@@ -1,38 +1,46 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<html>
+<div>
   <title> Registration of user.</title>
-  <h1 style="text-align:center; color:darkslateblue;" >
+  <h1>
   User information.
   </h1>
-  <body>
-      <div style="text-align:center">
-  <form>
-    <div class="form-group">
-    <label for="firstName">First name:</label>
-    <input [(ngModel)]="ngFirstName" name="firstName" type="text">
-    <br><br>
-    </div>
-    <div class="form-group">
-      <label for="lastName"> Last Name:</label>
-      <input [(ngModel)]="ngLastName" name="lastName" type="text">
-      <br><br>
-    </div>
+  <div>
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="firstName" class="control-label">First name:</label>
+        <input [(ngModel)]="firstName" name="firstName" type="text">
+      <br>
+      </div>
+      <div class="form-group">
+        <label for="lastName" class="control-label"> Last Name:</label>
+        <input [(ngModel)]="lastName" name="lastName" type="text">
+        <br>
+      </div>
+      <div class="form-group" [class.has-error]="email.invalid && email.touched"
+        [class.has-success]="email.valid">
+        <label for="emailId" class="control-label"> Email-Id:</label>
+        <input [(ngModel)]="emailId" email #email="ngModel" name="emailId" type="text" required>
+        <span class="help-block" *ngIf="email.errors && email.errors.required">
+          <br>Email is required.
+        </span>
+        <span class="help-block" *ngIf="email.errors && email.errors.email && email.touched">
+         <br>Email is invalid.
+        </span>
+        <br>
+      </div>
+      <div class="form-group">
+        <label for="password" class="control-label">Password</label>
+        <input [(ngModel)]="password" name="password" type="password" required #pass="ngModel" minlength = "2">
+        <span class="help-block" *ngIf="pass.errors && pass.errors.required">
+           <br>Password is required.
+        </span>
+        <span class="help-block" *ngIf="pass.errors && pass.errors.minlength">
+           <br>Password should be atleast 2 characters.
+        </span>
+        <br>
+      </div>
 
-    <div class="form-group">
-      <label for="emailId"> Email-Id:</label>
-      <input [(ngModel)]="ngEmailId" email name="emailId" required>
-      <br><br>
-    </div>
-    
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input [(ngModel)]="ngPassword" name="password" type="password" required minlength = "2">
-      <br><br>
-    </div>
-
-  <button class="btn btn-primary" (click)="onClick()"> Register </button>
-  </form>
+    <button class="btn btn-primary" [disabled]="!form.valid" (click)="onClick()"> Register </button>
+    </form>
+  </div>
 </div>
-</body>
-  
-  </html>
