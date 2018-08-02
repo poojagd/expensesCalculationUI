@@ -1,0 +1,77 @@
+<div>
+    <title> Add New Expense.</title>
+    <br>
+  
+  <h3>
+       Add New Expense
+  </h3>
+  <br>
+  <form #form="ngForm">
+          
+    <div class="form-group">
+      <label for="title" class="control-label">Title of the Expense:</label>
+      <div class="row">
+          <div class="col-lg-5" ></div>
+            <div class="col-lg-2">
+                <input class="form-control" [(ngModel)]="title" name="title" type="text">
+            </div>
+       </div>
+    </div>
+   
+    <div class="form-group" >
+      <label for="date" class="control-label" > Date:</label>
+      <div class="row">
+          <div class="col-lg-5" ></div>
+            <div class="col-lg-2">
+              <input class="form-control" [(ngModel)]="date" #Date="ngModel" name="date" type="date" required>
+              <span class="help-block" *ngIf="Date.errors && Date.touched && Date.errors.required">
+                <br>Date is required.
+              </span>
+            <br>
+      </div>
+      </div>
+    </div>  
+    
+    <div class="form-group">
+      <label for="amount" class="control-label"> Amount:</label>
+      <div class="row">
+          <div class="col-lg-5" ></div>
+            <div class="col-lg-2">
+              <input class="form-control" [(ngModel)]="amount" #Amount="ngModel" name="amount" type="number" required>
+              <span class="help-block" *ngIf="Amount.errors && Amount.touched && Amount.errors.required">
+              <br>Amount is required.
+              </span>
+              <br>
+            </div>
+      </div>
+    </div>
+   
+    <div class="form-group">
+      <label for="CategoryName" class="control-label"> Category:</label>
+      <div class="row">
+        <div class="col-lg-5" ></div>
+          <div class="col-lg-2">
+              <select class="form-control" #category="ngModel" placeholder="Select..." name="CategoryName"
+              [(ngModel)]="categoryName" id="CategoryName" required >
+                    <option  value="Electricity"> Electricity</option>
+              </select>
+              <span class="help-block" *ngIf="category.errors && category.touched &&category.errors.required">
+                  <br>Category is required.
+              </span>
+          </div>
+      </div>       
+    </div>
+  
+    <div class="form-group">
+      <label for="description" class="control-label">Description : </label>
+      <div class="row">
+          <div class="col-lg-5" ></div>
+            <div class="col-lg-2">
+              <input class="form-control" [(ngModel)]="description" name="description" type="text">
+              <br>
+            </div>
+      </div>
+    </div>
+  <button class="btn btn-primary" [disabled]="!form.valid" (click)="onAddExpense()"> + Add </button>
+</form>
+</div>>

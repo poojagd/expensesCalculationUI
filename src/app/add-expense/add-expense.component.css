@@ -1,0 +1,21 @@
+h1{
+    text-align:center; 
+    color:darkslateblue;
+}
+h3{
+    text-align: center;
+    color: midnightblue ;
+    font-size: 210%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div{
+    text-align:center;
+}
+span{
+    color :red;
+}
+label{
+    font-style: normal ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
+}
+
