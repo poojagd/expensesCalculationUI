@@ -17,12 +17,9 @@ export class AddExpenseComponent extends DatePipe implements OnInit {
   title : String;
   date :  Date;
   amount : Number;
-<<<<<<< Updated upstream
-  category = {} as Category;
-=======
+
   
->>>>>>> Stashed changes
-  categoryName : String;
+ categoryName : String;
   description : String;
   expense = {} as Expense;
   
@@ -36,12 +33,7 @@ export class AddExpenseComponent extends DatePipe implements OnInit {
     this.expense.title = this.title;
     this.expense.date = this.date ;
     this.expense.amount = this.amount;
-<<<<<<< Updated upstream
-    this.expense.category = this.category;
-    this.expense.category.categoryName = this.categoryName; 
-=======
     this.expense.categoryName = this.categoryName; 
->>>>>>> Stashed changes
     this.expense.description = this.description;
     console.log(this.expense);
         return this.http.post(this.apiUrl,this.expense)

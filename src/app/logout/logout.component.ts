@@ -13,9 +13,12 @@ export class LogoutComponent implements OnInit {
    ngOnInit() {
      this.onLogout();
   }
+
   constructor(public loginService : LoginService, public http : HttpClient,public router:Router, private cookieService: CookieService){  
   }
 
+
+  
   onLogout(){
     this.loginService.onLogout();
   }

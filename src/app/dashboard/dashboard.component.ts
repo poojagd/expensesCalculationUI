@@ -14,8 +14,7 @@ export class DashboardComponent implements OnInit {
     this.onView();
   }
 
-  constructor(public router:Router,public http : HttpClient){  
-  }
+  constructor(public router:Router,public http : HttpClient){  }
 
   elements : any[];
   list :any;
@@ -37,4 +36,5 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+  
   }

@@ -1,5 +1,5 @@
-import { map } from 'rxjs/operators';
 import { loginUser } from './loginUser';
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
         console.log(err); 
       });
   }
+  
   onhome(){
     this.router.navigate(['home']);
   }

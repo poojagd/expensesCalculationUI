@@ -1,4 +1,5 @@
 import { User } from './../../../login-app/src/app/app.component';
+
 import { Category } from './Category';
 
 export interface ExpenseReturned{

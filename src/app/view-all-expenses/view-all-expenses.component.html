@@ -49,22 +49,14 @@
       <td  width=10%> {{ expense.description}}</td>
       <td width=10%> <button class="btn" (click) = "onDelete(expense)"> delete</button></td>
     </tr>
-    <!-- <tr> 
-      <td *ngIf="show">Total Expenditure</td>
-      <td *ngIf="show"><div class=card>{{ totalExpenditure}}/- </div></td>
-    </tr> -->
-   </tbody>
+    </tbody>
   </table>
   <div *ngIf="show" class="card-footer">Total Expenditure : {{ totalExpenditure}}/-  </div>
   </div>
   </div>
+  
  <pagination-controls *ngIf="show" (pageChange) = "page = $event" autoHide="true"
  responsive="true"> </pagination-controls>
-             <!-- <ul class="list-group list-group-flush ">
-                <li class="list-group-item" *ngFor = "let expense of list">
-                 {{expense.id }} | {{ expense.user.email}} | {{expense.title}} | {{expense.date}} | {{expense.amount}} | {{expense.description}} 
-                </li>
-             </ul> -->
 
 <div class="row">
     <div class="col-lg-12">

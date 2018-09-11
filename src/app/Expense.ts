@@ -1,5 +1,3 @@
-import { Category } from "./Category";
-
 export interface Expense{
     title : String;
     date : Date;

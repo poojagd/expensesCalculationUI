@@ -1,7 +1,5 @@
 <div>
     <title> Add New Expense.</title>
-   
-   
    <div class="row">
       <div class="col-lg-12">
         <nav class="nav navbar-expand-lg navbar-light" >
@@ -36,29 +34,18 @@
        </span>
          <br>
     </div>  
-    
+
     <div class="form-group">
       <label for="amount" class="control-label"> Amount:</label>
-  
               <input class="form-control" [(ngModel)]="amount" #Amount="ngModel" name="amount" type="number" required>
               <span class="help-block" *ngIf="Amount.errors && Amount.touched && Amount.errors.required">
               <br>Amount is required.
               </span>
               <br>
-            
     </div>
    
     <div class="form-group">
       <label for="CategoryName" class="control-label"> Category:</label>
-<<<<<<< Updated upstream
-      <div class="row">
-        <div class="col-lg-5" ></div>
-          <div class="col-lg-2">
-              <select class="form-control" #category="ngModel" placeholder="Select..." name="CategoryName"
-              [(ngModel)]="categoryName" id="CategoryName" required >
-                    <option  value="Electricity"> Electricity</option>
-              </select>
-=======
         <input type="text" list="categories" class="form-control" #category="ngModel" name="CategoryName"
         [(ngModel)]="categoryName" id="CategoryName" required  />
               <datalist id="categories">
@@ -68,28 +55,24 @@
                 <option>Grocery</option>
                 <option>Food</option>
               </datalist>
-             
->>>>>>> Stashed changes
+
               <span class="help-block" *ngIf="category.errors && category.touched &&category.errors.required">
                   <br>Category is required.
               </span>
     </div>
   
     <div class="form-group">
-     
       <label for="description" class="control-label">Description : </label>
       <input class="form-control" [(ngModel)]="description" name="description" type="text">
        <br>
-    
     </div>
-  <button class="btn btn-primary" [disabled]="!form.valid" (click)="onAddExpense()"> + Add </button>
-</form>
-<<<<<<< Updated upstream
-</div>>
-=======
-</div>
+
+   <button class="btn btn-primary" [disabled]="!form.valid" (click)="onAddExpense()"> + Add </button>
+  </form>
+  </div>
 </div>
 </div><br>
+
 <div class="row">
     <div class="col-lg-12">
       <nav class="nav navbar-expand-lg navbar-light" >
@@ -102,4 +85,4 @@
      </nav>
      </div>
    </div>
->>>>>>> Stashed changes
+

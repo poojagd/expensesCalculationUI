@@ -1,7 +1,7 @@
+import { loginUser } from './login/loginUser';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { loginUser } from './login/loginUser';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
