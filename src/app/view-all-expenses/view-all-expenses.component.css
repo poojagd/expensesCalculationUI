@@ -1,0 +1,24 @@
+nav{
+    background-color: #e3f2fd
+}
+well{
+    background-color: aqua;
+    align-self: center;
+   
+}
+table{
+   height: 30%  ;
+  
+    border: 3 ;
+}
+pagination-controls{
+    text-align: center;
+    align-self: center;
+}
+div.card{
+    width:70%; 
+    align-self: center;
+    margin: 0 auto; 
+    float: none;
+    margin-bottom: 10px;
+}

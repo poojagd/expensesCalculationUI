@@ -1,0 +1,80 @@
+<div>
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+              <nav class="nav navbar-expand-lg navbar-light" >
+                 <div class="navbar-header">
+                 <a class="navbar-brand" (click)="onhome()">Expense Manager</a>
+                 </div>
+                       <ul class="nav nav-pills ml-auto" >
+                       <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
+                       
+                       </ul> 
+             </nav>
+             </div>
+           </div>
+           <br>
+<div class="card rounded-0 " >
+    <div class="card-header">
+      <h3 class="mb-0">Expenses List</h3>
+    </div>
+    <div class="card-body">
+<table class="table table-striped" >
+  <thead>
+  <tr *ngIf="show">
+      <th width=5%>#</th>
+      <th width=10%> Name</th>
+      <th width=25%>Email id</th>
+      <th width=15%>Title</th>
+      <th width=10%>Category</th>
+      <th width=10%>Date</th>
+      <th width=15%> Amount</th>
+      <th width=10%>Description</th>
+      <th width=10%></th>
+    </tr>
+</thead>
+   <tbody>
+    <tr *ngFor = "let expense of list | paginate:
+                                                    { itemsPerPage :10, 
+                                                      currentPage:page
+                                                    } ;let i = index; 
+                                                    ">
+      <td width=5%>{{i+1}} </td>
+     <td width=10%> {{ expense.user.firstName }} {{ expense.user.lastName }}</td>
+      <td width=25% > {{ expense.user.email}}</td>
+      <td  width=15%> {{ expense.title}}</td>
+      <td  width=10%> {{ expense.category.categoryName}}</td>
+      <td  width=10%> {{ expense.date}}</td>
+      <td width=15%d > {{ expense.amount}}</td>
+      <td  width=10%> {{ expense.description}}</td>
+      <td width=10%> <button class="btn" (click) = "onDelete(expense)"> delete</button></td>
+    </tr>
+    <!-- <tr> 
+      <td *ngIf="show">Total Expenditure</td>
+      <td *ngIf="show"><div class=card>{{ totalExpenditure}}/- </div></td>
+    </tr> -->
+   </tbody>
+  </table>
+  <div *ngIf="show" class="card-footer">Total Expenditure : {{ totalExpenditure}}/-  </div>
+  </div>
+  </div>
+ <pagination-controls *ngIf="show" (pageChange) = "page = $event" autoHide="true"
+ responsive="true"> </pagination-controls>
+             <!-- <ul class="list-group list-group-flush ">
+                <li class="list-group-item" *ngFor = "let expense of list">
+                 {{expense.id }} | {{ expense.user.email}} | {{expense.title}} | {{expense.date}} | {{expense.amount}} | {{expense.description}} 
+                </li>
+             </ul> -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <nav class="nav navbar-expand-lg navbar-light" >
+            <ul class="nav nav-pills" >
+            <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+            <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
+            <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">View all expenses</a></li>
+            </ul> 
+  </nav>
+     </div>
+</div>
+</div>

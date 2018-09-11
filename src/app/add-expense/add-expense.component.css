@@ -18,4 +18,13 @@ label{
     font-style: normal ;
     font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
+nav{
+    background-color: #e3f2fd
+}
+
+well{
+    background-color: aqua;
+    align-self: center;
+   
+}
 

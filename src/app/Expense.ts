@@ -4,6 +4,6 @@ export interface Expense{
     title : String;
     date : Date;
     amount : Number;
-    category : Category;
+    categoryName : String;
     description : String;
 }

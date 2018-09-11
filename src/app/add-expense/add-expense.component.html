@@ -1,53 +1,56 @@
 <div>
     <title> Add New Expense.</title>
-    <br>
-  
-  <h3>
-       Add New Expense
-  </h3>
-  <br>
-  <form #form="ngForm">
+   
+   
+   <div class="row">
+      <div class="col-lg-12">
+        <nav class="nav navbar-expand-lg navbar-light" >
+           <div class="navbar-header">
+           <a class="navbar-brand" >Expense Manager</a>
+           </div>
           
+                 <ul class="nav nav-pills ml-auto" >
+                 <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
+                 </ul> 
+       </nav>
+       </div>
+     </div>
+     <br>
+  <div class="container" >
+      <div class="card rounded-0">
+          <div class="card-header">
+            <h3 class="mb-0">Add New Expense</h3>
+          </div>
+          <div class="card-body">
+  <form #form="ngForm">
     <div class="form-group">
       <label for="title" class="control-label">Title of the Expense:</label>
-      <div class="row">
-          <div class="col-lg-5" ></div>
-            <div class="col-lg-2">
-                <input class="form-control" [(ngModel)]="title" name="title" type="text">
-            </div>
-       </div>
+      <input class="form-control" [(ngModel)]="title" name="title" type="text">
     </div>
-   
+
     <div class="form-group" >
       <label for="date" class="control-label" > Date:</label>
-      <div class="row">
-          <div class="col-lg-5" ></div>
-            <div class="col-lg-2">
-              <input class="form-control" [(ngModel)]="date" #Date="ngModel" name="date" type="date" required>
-              <span class="help-block" *ngIf="Date.errors && Date.touched && Date.errors.required">
-                <br>Date is required.
-              </span>
-            <br>
-      </div>
-      </div>
+      <input class="form-control" [(ngModel)]="date" #Date="ngModel" name="date" type="date" required>
+       <span class="help-block" *ngIf="Date.errors && Date.touched && Date.errors.required">
+         <br>Date is required.
+       </span>
+         <br>
     </div>  
     
     <div class="form-group">
       <label for="amount" class="control-label"> Amount:</label>
-      <div class="row">
-          <div class="col-lg-5" ></div>
-            <div class="col-lg-2">
+  
               <input class="form-control" [(ngModel)]="amount" #Amount="ngModel" name="amount" type="number" required>
               <span class="help-block" *ngIf="Amount.errors && Amount.touched && Amount.errors.required">
               <br>Amount is required.
               </span>
               <br>
-            </div>
-      </div>
+            
     </div>
    
     <div class="form-group">
       <label for="CategoryName" class="control-label"> Category:</label>
+<<<<<<< Updated upstream
       <div class="row">
         <div class="col-lg-5" ></div>
           <div class="col-lg-2">
@@ -55,23 +58,48 @@
               [(ngModel)]="categoryName" id="CategoryName" required >
                     <option  value="Electricity"> Electricity</option>
               </select>
+=======
+        <input type="text" list="categories" class="form-control" #category="ngModel" name="CategoryName"
+        [(ngModel)]="categoryName" id="CategoryName" required  />
+              <datalist id="categories">
+                <option>Electricity</option>
+                <option>Phone</option>
+                <option>Internet</option>
+                <option>Grocery</option>
+                <option>Food</option>
+              </datalist>
+             
+>>>>>>> Stashed changes
               <span class="help-block" *ngIf="category.errors && category.touched &&category.errors.required">
                   <br>Category is required.
               </span>
-          </div>
-      </div>       
     </div>
   
     <div class="form-group">
+     
       <label for="description" class="control-label">Description : </label>
-      <div class="row">
-          <div class="col-lg-5" ></div>
-            <div class="col-lg-2">
-              <input class="form-control" [(ngModel)]="description" name="description" type="text">
-              <br>
-            </div>
-      </div>
+      <input class="form-control" [(ngModel)]="description" name="description" type="text">
+       <br>
+    
     </div>
   <button class="btn btn-primary" [disabled]="!form.valid" (click)="onAddExpense()"> + Add </button>
 </form>
+<<<<<<< Updated upstream
 </div>>
+=======
+</div>
+</div>
+</div><br>
+<div class="row">
+    <div class="col-lg-12">
+      <nav class="nav navbar-expand-lg navbar-light" >
+         
+               <ul class="nav nav-pills" >
+               <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+               <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
+               <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">View all  </a></li>
+               </ul> 
+     </nav>
+     </div>
+   </div>
+>>>>>>> Stashed changes
