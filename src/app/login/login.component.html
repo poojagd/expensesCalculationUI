@@ -15,6 +15,11 @@
          </div>
        </div>
   <br>
+  
+  <div class="alert alert-danger" *ngIf="errorOccurred" >
+       <strong> Incorrect email-id or password. Error message from Server:- {{errorMessage}}</strong>
+  </div>
+
   <div class="container" >
     <div class="card rounded-0">
             <div class="card-header">

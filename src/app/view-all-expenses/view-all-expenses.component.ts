@@ -20,6 +20,9 @@ export class ViewAllExpensesComponent implements OnInit {
   page: number = 1;
   totalExpenditure : number = 0;
   show : boolean = false;
+  errorOccurred :boolean = false;
+  errorMessage :string ;
+
   private apiUrl  : string = "http://localhost:8080/user/expenses";
 
   constructor(public http : HttpClient, public getAllExpense : GetExpensesService){ 
@@ -41,7 +44,14 @@ export class ViewAllExpensesComponent implements OnInit {
           console.log(this.list);
          },
          err =>{
-         console.error(err);
+          console.log(err); 
+          this.errorOccurred = true;
+          
+          this.errorMessage = err.error.message;
+         
+          if(this.errorMessage == "undefined"){
+            this.errorMessage = err.message;
+          }
          }
        )
   }
@@ -61,7 +71,14 @@ export class ViewAllExpensesComponent implements OnInit {
             console.log(res);
         },
         err => {
-            console.log(err);
+            console.log(err); 
+          this.errorOccurred = true;
+          
+          this.errorMessage = err.error.message;
+         
+          if(this.errorMessage == "undefined"){
+            this.errorMessage = err.message;
+          }
         }
       );
   }

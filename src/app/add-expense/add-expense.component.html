@@ -14,6 +14,9 @@
        </div>
      </div>
      <br>
+     <div class="alert alert-danger" *ngIf="errorOccurred" >
+        <strong> Error!! Error message from Server:- {{errorMessage}}</strong>
+  </div>
   <div class="container" >
       <div class="card rounded-0">
           <div class="card-header">

@@ -23,7 +23,9 @@ export class DashboardComponent implements OnInit {
   show : boolean = false;
   private apiUrl  : string = "http://localhost:8080/user/expenses/monthwise";
   totalExpenditure : number = 0;
-   
+  errorOccurred : boolean = false;
+  errorMessage : string ;
+
   onView()  {
     return this.http.get<any>(this.apiUrl)
     .subscribe(
@@ -35,7 +37,17 @@ export class DashboardComponent implements OnInit {
         this.list.May + this.list.June + this.list.July + this.list.August + this.list.September + 
         this.list.October + this.list.November + this.list.December ;
         console.log(this.list);
-      }
-    );
+      },
+      err => {
+        
+        console.log(err); 
+        this.errorOccurred = true;
+        
+        this.errorMessage = err.error.message;
+       
+        if(this.errorMessage == "undefined") {
+          this.errorMessage = err.message;
+         }
+    });
   }
  }

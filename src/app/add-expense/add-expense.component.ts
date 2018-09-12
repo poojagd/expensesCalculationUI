@@ -22,7 +22,9 @@ export class AddExpenseComponent extends DatePipe implements OnInit {
   description : String;
   expense = {} as Expense;
   private apiUrl  : string = "http://localhost:8080/user/expenses";
-  
+  errorOccurred : boolean = false;
+  errorMessage : string = "None";
+
   constructor(public http : HttpClient,public router:Router)
   { 
     super("http");
@@ -43,6 +45,13 @@ export class AddExpenseComponent extends DatePipe implements OnInit {
         },
         err => {
           console.log(err); 
-        });
+          this.errorOccurred = true;
+          
+          this.errorMessage = err.error.message;
+          
+          if(this.errorMessage == "undefined"){
+            this.errorMessage = err.message;
+           }
+       });
   }
 }

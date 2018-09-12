@@ -18,7 +18,9 @@ export class RegisterComponent implements OnInit {
   email : String;
   password : String;
   user = {} as User;
- 
+  errorOccurred :boolean = false;
+  errorMessage :string ;
+
   private apiUrl  : string = "http://localhost:8080/users";
   
   constructor(public http : HttpClient, public router : Router){  
@@ -34,10 +36,18 @@ export class RegisterComponent implements OnInit {
        .subscribe(
         res => {
           console.log(res);
+          alert("You are registered. Please login.");
           this.router.navigate(['login']);
         },
         err => {
           console.log(err); 
+          this.errorOccurred = true;
+         
+          this.errorMessage = err.error.message;
+         
+          if(this.errorMessage == "undefined"){
+            this.errorMessage = err.message;
+          }
         });
       
   }

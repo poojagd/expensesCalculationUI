@@ -29,7 +29,9 @@ export class LoginService {
   onLogout(){
      this.cookieService.delete('token');
      this.cookieService.delete('email');
+     alert("You are logged out.");
      this.router.navigate(['login']);
+     
   }
 
 }

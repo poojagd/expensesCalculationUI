@@ -21,7 +21,9 @@ export class LoginComponent implements OnInit {
   password : String;
   LoggedInUser = {} as loginUser;
   token : string;
-    
+  errorOccurred :boolean = false;
+  errorMessage :string ;
+  
   constructor(public loginService : LoginService,public http : HttpClient,public router:Router, private cookieService: CookieService){  
   }
 
@@ -41,8 +43,16 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['dashboard']);
        },
       err => {
+        
         console.log(err); 
-      });
+        this.errorOccurred = true;
+        
+        this.errorMessage = err.error.message;
+       
+        if(this.errorMessage == "undefined"){
+          this.errorMessage = err.message;
+         }
+     });
   }
 
   onhome(){
