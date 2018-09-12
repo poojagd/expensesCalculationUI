@@ -19,9 +19,9 @@ import { ViewAllExpensesComponent } from './view-all-expenses/view-all-expenses.
 import { LoginService } from './login.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { LogoutComponent } from './logout/logout.component';
+import { MailSummaryComponent } from './mail-summary/mail-summary.component';
 
-
-const appRoutes :Routes = [
+const appRoutes : Routes = [
   {
     path : 'home',
     component:HomeComponent
@@ -42,7 +42,10 @@ const appRoutes :Routes = [
     path: 'dashboard',
     component:DashboardComponent
   },
- 
+  {
+    path: 'mailSummary',
+    component:MailSummaryComponent
+  },
   {
     path: 'view-all-expenses',
     component:ViewAllExpensesComponent
@@ -58,6 +61,7 @@ const appRoutes :Routes = [
 ]
 
 @NgModule({
+
   declarations: [
     AppComponent,
     RegisterComponent,
@@ -66,27 +70,30 @@ const appRoutes :Routes = [
     DashboardComponent,
     HomeComponent,
     ViewAllExpensesComponent,
-    LogoutComponent
+    LogoutComponent,
+    MailSummaryComponent,
   ],
-  imports: [
+
+ imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-
     RouterModule.forRoot(appRoutes),
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     NgxPaginationModule
-
-
   ],
   providers: [ CookieService, 
     {
     provide : HTTP_INTERCEPTORS,
     useClass : TokenInterceptorService,
     multi : true
-  },LoginService, GetExpensesService],
+  },
+
+  LoginService, 
+  GetExpensesService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

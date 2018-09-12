@@ -1,7 +1,3 @@
-import { async } from '@angular/core/testing';
-import { ExpenseReturned } from './../ExpenseReturned';
-import { Expense } from './../Expense';
-import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GetExpensesService } from '../get-expenses.service';
@@ -26,12 +22,11 @@ export class ViewAllExpensesComponent implements OnInit {
   show : boolean = false;
   private apiUrl  : string = "http://localhost:8080/user/expenses";
 
-  constructor(public http : HttpClient,public getAllExpense : GetExpensesService){ 
+  constructor(public http : HttpClient, public getAllExpense : GetExpensesService){ 
   }
-  
   onView(){
-       
-       this.getAllExpense.getExpenses()
+
+        this.getAllExpense.getExpenses()
        .subscribe(
          res => {
            this.expensesList =  [res];
@@ -52,7 +47,7 @@ export class ViewAllExpensesComponent implements OnInit {
   }
 
   onDelete(expense){
-   
+    
       console.log("delete id="+ expense.id);
       this.http.delete( `${this.apiUrl}/${expense.id}`)
       .subscribe(
@@ -68,6 +63,6 @@ export class ViewAllExpensesComponent implements OnInit {
         err => {
             console.log(err);
         }
-        );
+      );
   }
 }

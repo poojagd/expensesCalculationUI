@@ -8,7 +8,6 @@
                  </div>
                        <ul class="nav nav-pills ml-auto" >
                        <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
-                       
                        </ul> 
              </nav>
              </div>
@@ -34,8 +33,7 @@
     </tr>
 </thead>
    <tbody>
-    <tr *ngFor = "let expense of list | paginate:
-                                                    { itemsPerPage :10, 
+    <tr *ngFor = "let expense of list | paginate:{ itemsPerPage :10, 
                                                       currentPage:page
                                                     } ;let i = index; 
                                                     ">
@@ -54,11 +52,11 @@
   <div *ngIf="show" class="card-footer">Total Expenditure : {{ totalExpenditure}}/-  </div>
   </div>
   </div>
-  
+
  <pagination-controls *ngIf="show" (pageChange) = "page = $event" autoHide="true"
  responsive="true"> </pagination-controls>
 
-<div class="row">
+ <div class="row">
     <div class="col-lg-12">
         <nav class="nav navbar-expand-lg navbar-light" >
             <ul class="nav nav-pills" >

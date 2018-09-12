@@ -1,6 +1,3 @@
-<p>
-  dashboard works!
-</p>
 <div class="row">
     <div class="col-lg-12">
       <nav class="nav navbar-expand-lg navbar-light" >
@@ -64,7 +61,6 @@
           <tr>
           <td>December,2018</td><td > {{ list.December}}</td>
           </tr>    
-       
         <tr> 
             <td *ngIf="show">Total Expenditure</td>
             <td *ngIf="show"><div class=card>{{ totalExpenditure}}/- </div></td>
@@ -81,7 +77,9 @@
             <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
             <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
             <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">
-            View all expenses </a></li>
+                View all expenses </a>
+            </li>
+            <li class="nav-item " ><a class = "nav-link" routerLink="/mailSummary">Mail Summary </a></li>
           </ul> 
        </nav>
        </div>

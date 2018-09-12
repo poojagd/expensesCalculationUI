@@ -14,15 +14,17 @@ export class DashboardComponent implements OnInit {
     this.onView();
   }
 
-  constructor(public router:Router,public http : HttpClient){  }
+  constructor(public router:Router,public http : HttpClient){  
 
+  }
+  
   elements : any[];
   list :any;
   show : boolean = false;
   private apiUrl  : string = "http://localhost:8080/user/expenses/monthwise";
   totalExpenditure : number = 0;
    
-  onView(){
+  onView()  {
     return this.http.get<any>(this.apiUrl)
     .subscribe(
       res => {
@@ -36,5 +38,4 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
-  
-  }
+ }

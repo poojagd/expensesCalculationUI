@@ -1,4 +1,4 @@
-import { User } from './../../../login-app/src/app/app.component';
+import { User } from './register/user';
 
 import { Category } from './Category';
 

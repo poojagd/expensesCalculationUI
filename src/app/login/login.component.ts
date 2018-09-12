@@ -14,18 +14,21 @@ import { CookieService } from 'ngx-cookie-service';
 export class LoginComponent implements OnInit {
 
    ngOnInit() {
+     this.cookieService.deleteAll();
   }
-  email : String;
+
+  email : string;
   password : String;
   LoggedInUser = {} as loginUser;
   token : string;
     
   constructor(public loginService : LoginService,public http : HttpClient,public router:Router, private cookieService: CookieService){  
   }
+
   onLogin(){
-    
     this.LoggedInUser.email = this.email; 
     this.LoggedInUser.password = this.password;
+    
     this.loginService.authenticate(this.LoggedInUser)
     .subscribe(
     (response) => {
@@ -33,6 +36,7 @@ export class LoginComponent implements OnInit {
           this.token = response.token;
            localStorage.setItem('token', response.token);
           this.cookieService.set('token',response.token);
+          this.cookieService.set('email',this.email);
           this.loginService.token = response.headers;
           this.router.navigate(['dashboard']);
        },
@@ -40,7 +44,7 @@ export class LoginComponent implements OnInit {
         console.log(err); 
       });
   }
-  
+
   onhome(){
     this.router.navigate(['home']);
   }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest , HttpHandler, HttpEvent} from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
+import {} from 'rxjs/add/operator/timeout';
 @Injectable({
   providedIn: 'root'
 })
