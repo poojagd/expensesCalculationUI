@@ -6,22 +6,20 @@ well{
     align-self: center;
    
 }
-table{
-  
-  text-align: center;
-    border: 3 ;
-    padding: 1px;
+h1{
+    text-align:center; 
+    color:darkslateblue;
 }
-pagination-controls{
-    text-align: center;
-    align-self: center;
+h3{
+   
+    color: midnightblue ;
+    font-size: 210%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-div.card{
-    width:80%; 
-    align-self: center;
-    margin: 0 auto; 
-    float: none;
-    margin-bottom: 8px;
+
+label{
+    font-style: normal ;
+    font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
 .col-lg-12{
     padding-left: 0%;

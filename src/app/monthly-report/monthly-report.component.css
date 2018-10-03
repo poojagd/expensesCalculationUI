@@ -1,0 +1,67 @@
+nav{
+    background-color: #e3f2fd
+}
+
+well{
+    background-color: aqua;
+    align-self: center;
+}
+div.card{
+    width:70%; 
+    align-self: center;
+    margin: 0 auto; 
+    float: none;
+    margin-bottom: 10px;
+}
+.modal-body{
+    width:70%; 
+    margin: 0 auto; 
+    align-self: center;
+}
+table{
+    widows: 100px;;
+}
+th{
+    width: 25%;
+}
+td{
+    width:25%
+}
+table{
+    width: 50%;
+    text-align: center;
+    align-self: center;
+}
+thead{
+    background-color: #e0f7fa;
+}
+.col-lg-12{
+    padding-left: 0%;
+    padding-right: 0%;
+}
+a.dropdown-item:hover{
+    background-color:#91d9fa;
+}
+.dropdown-menu{
+    background-color: #e3f2fd;
+}
+.barChart{
+    height: 300px;
+}
+.modal-header{
+    background-color:#546e7a;
+    color: white;
+    font-weight: bold;
+}
+p{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(63, 81, 181, 0.7);
+    color: white;
+    font-weight: bold;
+}
+.info{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}

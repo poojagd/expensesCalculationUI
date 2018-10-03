@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 
 
@@ -14,7 +15,8 @@ export class LoginService {
   
   authenticated = false;
   
-  constructor(private cookieService : CookieService, private http: HttpClient,public router : Router) {
+  constructor(private cookieService : CookieService, private http: HttpClient,public router : Router,
+    public toastrService : ToastrService) {
   }
   
   token : String;
@@ -29,9 +31,13 @@ export class LoginService {
   onLogout(){
      this.cookieService.delete('token');
      this.cookieService.delete('email');
-     alert("You are logged out.");
      this.router.navigate(['login']);
-     
+     this.toastrService.info('You are now logged out.' ,'Logout Successful.',
+     {
+      timeOut: 2000,
+      positionClass: 'toast-top-center'
+     });
+  
   }
 
 }

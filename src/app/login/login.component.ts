@@ -5,6 +5,8 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LoginService } from '../login.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'login',
@@ -24,7 +26,8 @@ export class LoginComponent implements OnInit {
   errorOccurred :boolean = false;
   errorMessage :string ;
   
-  constructor(public loginService : LoginService,public http : HttpClient,public router:Router, private cookieService: CookieService){  
+  constructor(public loginService : LoginService,public http : HttpClient,public router:Router,
+     private cookieService: CookieService, public toastrService : ToastrService){  
   }
 
   onLogin(){
@@ -36,10 +39,14 @@ export class LoginComponent implements OnInit {
     (response) => {
           console.log(response);
           this.token = response.token;
-           localStorage.setItem('token', response.token);
           this.cookieService.set('token',response.token);
           this.cookieService.set('email',this.email);
           this.loginService.token = response.headers;
+          this.loginService.authenticated = true;
+          this.toastrService.success('You are now logged in.','Login Successful.',{
+            timeOut: 4000,
+            positionClass: 'toast-top-right'
+          } );
           this.router.navigate(['dashboard']);
        },
       err => {
@@ -49,7 +56,7 @@ export class LoginComponent implements OnInit {
         
         this.errorMessage = err.error.message;
        
-        if(this.errorMessage == "undefined"){
+        if(this.errorMessage == undefined){
           this.errorMessage = err.message;
          }
      });

@@ -1,4 +1,5 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
 <title> Login </title>
 <div>
     <div class="row">
@@ -9,7 +10,8 @@
              </div>
                    <ul class="nav nav-pills ml-auto" >
                    <li class="nav-item " ><a class = "nav-link " routerLink="/login">Login </a></li>
-                   <li  class="nav-item"><a class ="nav-link "  routerLink="/register">Sign up</a></li>
+                   <li  class="nav-item"><a class ="nav-link "  routerLink="/register">
+                    <i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></li>
                    </ul> 
          </nav>
          </div>
@@ -35,7 +37,9 @@
         <label for="password" class="control-label"> Password:</label>
           <input [(ngModel)]="password" name="password" type="password">
         </div>
-      <button class="btn btn-success" type="submit" [disabled]="!form.valid" (click)="onLogin()"> Login </button>
+      
+        <button class="btn btn-success" type="submit" [disabled]="!form.valid" (click)="onLogin()"> Login </button>
+
      </form>
     </div>
   </div>
@@ -51,4 +55,5 @@
          </nav>
          </div>
   </div>
+</div>
 </div>
