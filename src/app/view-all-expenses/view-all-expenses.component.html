@@ -1,0 +1,89 @@
+    <div class=container-fluid>
+        <div class="row">
+            <div class="col-lg-12">
+              <nav class="nav navbar-expand-lg navbar-light" >
+                 <div class="navbar-header">
+                 <a class="navbar-brand" (click)="onhome()">Expense Manager</a>
+                 </div>
+                       <ul class="nav nav-pills" >
+                        <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+                        <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
+                        <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">View all expenses</a></li>
+                       </ul>
+                       <ul class="nav nav-pills ml-auto" >
+                            <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                                        <i class="fa fa-user" aria-hidden="true"></i> User Management
+                                    </a>
+                                    <div class="dropdown-menu">
+                                      <a class="dropdown-item" routerLink="/update-userInfo">
+                                         Change userInfo </a>
+                                      <a  class="dropdown-item" routerLink="/update-password">
+                                        Change password </a>
+                                    </div>
+                                  </li>
+                       <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
+                       </ul> 
+             </nav>
+             </div>
+           </div>
+           <br>
+    <div class="container-fluid">
+           <div class="alert alert-danger" *ngIf="errorOccurred" >
+              <strong> Error!! Error message from Server:- {{errorMessage}}</strong>
+          </div>
+<div class="card rounded-0 " >
+    <div class="card-header">
+      <h3 class="mb-0">Expenses List</h3>
+    </div>
+    <div class="card-body">
+  <table class="table table-striped table-responsive" >
+    <thead>
+      <tr *ngIf="show">
+      <th width=2%>#</th>
+      <th width=15%> Name</th>
+      <th width=25%>Email id</th>
+      <th width=15%>Title</th>
+      <th width=13%>Category</th>
+      <th width=20%>Date</th>
+      <th width=15%> Amount</th>
+      <th width=10%>Description</th>
+      <th width=10%></th>
+    </tr>
+    </thead>
+   <tbody>
+    <tr *ngFor = "let expense of list | paginate:{ itemsPerPage :10, 
+                                                      currentPage:page
+                                                    } ;let i = index; 
+                                                    ">
+      <td width=5%>{{i+1}} </td>
+     <td width=15%> {{ expense.user.firstName }} {{ expense.user.lastName }}</td>
+      <td width=25% > {{ expense.user.email}}</td>
+      <td  width=15%> {{ expense.title}}</td>
+      <td  width=13%> {{ expense.category.categoryName}}</td>
+      <td  width=20%> {{ expense.date}}</td>
+      <td width=15%d > {{ expense.amount}}</td>
+      <td  width=10%> {{ expense.description}}</td>
+      <td width=10%> 
+      <button class="btn" (click) = "onDelete(expense)">Delete <i class="fa fa-trash" aria-hidden="true"></i>
+      </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div *ngIf="show" class="card-footer">Total Expenditure : {{ totalExpenditure}}/-  </div>
+  </div>
+  <pagination-controls *ngIf="show" (pageChange) = "page = $event" autoHide="true"
+ responsive="true"> </pagination-controls>
+  </div>
+ 
+ 
+</div>
+ <div class="row">
+    <div class="col-lg-12">
+        <nav class="nav navbar-expand-lg navbar-light" >
+            
+  </nav>
+     </div>
+</div>
+</div>

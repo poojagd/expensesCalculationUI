@@ -1,0 +1,15 @@
+nav{
+    background-color: #e3f2fd
+}
+well{
+    background-color: aqua;
+    align-self: center;
+}
+.col-lg-12{
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.dropdown-menu{
+    background-color: #e3f2fd;
+}

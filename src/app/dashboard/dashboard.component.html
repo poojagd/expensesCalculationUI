@@ -1,0 +1,133 @@
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-12">
+      <nav class="nav navbar-expand-lg navbar-light" >
+         <div class="navbar-header">
+         <a class="navbar-brand" >Expense Manager</a>
+         </div>
+          <ul class="nav nav-pills" >
+              <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+              <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
+              <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">View all expenses </a> </li>
+              <li class="nav-item " ><a class = "nav-link" routerLink="/mailSummary">Mail Summary </a></li>
+            </ul> 
+           <ul class="nav nav-pills ml-auto" >
+             
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        <i class="fa fa-user" aria-hidden="true"></i> User Management
+                    </a>
+                    
+                    <div class="dropdown-menu">
+                       <a class="dropdown-item" routerLink="/update-userInfo">
+                         Change userInfo </a>
+                      <a  class="dropdown-item" routerLink="/update-password">
+                        Change password </a>
+                    </div>
+                  </li>
+             
+                <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
+           </ul> 
+     </nav>
+     </div>
+   </div>
+
+   
+  <br>
+  <div class= container-fluid>
+      
+      <div class="alert alert-danger" *ngIf="errorOccurred" >
+          <strong>Error!! Error message from Server:- {{errorMessage}}</strong>
+    </div>
+
+    <div class="card rounded-0 " >
+      <div class="card-header">
+        <h3 class="mb-0">Dashboard</h3>
+      </div>
+      <ul class="nav nav-tabs justify-content-center">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/dashboard" routerLinkActive="active">Yearly Report</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link"  routerLink="/monthly-report" routerLinkActive="active" >Monthly Report</a>
+          </li>
+      </ul>
+
+      <div class="card-body">
+         
+              <canvas
+                  baseChart
+                  [chartType]="'bar'"
+                  [datasets]="chartData"
+                  [labels]="labels"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  [colors]="colors"
+                  (chartClick)="onChartClick($event)"
+                >
+              </canvas>
+           
+  <!-- <table class="table table-bordered table-responsive" *ngIf="show">
+      <thead >
+      <tr >
+          <th width="30%"> Month and year</th>
+          <th width="30%">Expenses</th>
+      </tr>
+    </thead>
+       <tbody>
+        <tr>
+          <td width="30%">January,2018</td><td > {{ list.January}}</td>
+          </tr>
+          <tr>
+          <td>February,2018</td><td > {{ list.February}}</td>
+          </tr>
+          <tr>
+          <td>March,2018</td><td > {{ list.March}}</td>
+          </tr>
+          <tr>
+          <td>April,2018</td><td > {{ list.April}}</td>
+          </tr>
+          <tr>
+          <td>May,2018</td><td > {{ list.May}}</td>
+          </tr>
+          <tr>
+          <td>June,2018</td><td > {{ list.June}}</td>
+          </tr>
+          <tr>
+          <td>July,2018</td><td > {{ list.July}}</td>
+          </tr>
+          <tr>
+          <td>August,2018</td><td > {{ list.August}}</td>
+          </tr>
+          <tr>
+          <td>September,2018</td><td > {{ list.September}}</td>
+          </tr>
+          <tr>
+          <td>October,2018</td><td > {{ list.October}}</td>
+          </tr>
+          <tr>
+          <td>November,2018</td><td > {{ list.November}}</td>
+          </tr>
+          <tr>
+          <td>December,2018</td><td > {{ list.December}}</td>
+          </tr>    
+        <tr> 
+            <td *ngIf="show">Total Expenditure</td>
+            <td *ngIf="show"><div class=card>{{ totalExpenditure}}/- </div></td>
+          </tr>
+       </tbody>
+      </table> -->
+
+       </div>
+       <div *ngIf="show" class="card-footer">Total Expenditure : {{ totalExpenditure}}/-  </div>
+      
+    </div>
+</div>
+  <div class="row">
+      <div class="col-lg-12">
+        <nav class="nav navbar-expand-lg navbar-light" >
+         
+       </nav>
+       </div>
+     </div>
+     </div>

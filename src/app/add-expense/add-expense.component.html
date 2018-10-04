@@ -1,0 +1,134 @@
+<div class="container-fluid">
+  <title> Add New Expense.</title>
+  <div class="row">
+    <div class="col-lg-12">
+      <nav class="nav navbar-expand-lg navbar-light">
+        <div class="navbar-header">
+          <a class="navbar-brand">Expense Manager</a>
+        </div>
+        <ul class="nav nav-pills">
+          <li class="nav-item "><a class="nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+          <li class="nav-item "><a class="nav-link " routerLink="/add-expense">Add new expense </a></li>
+          <li class="nav-item "><a class="nav-link" routerLink="/view-all-expenses">View all expenses</a></li>
+        </ul>
+        <ul class="nav nav-pills ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    <i class="fa fa-user" aria-hidden="true"></i> User Management
+                </a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" routerLink="/update-userInfo">
+                     Change userInfo </a>
+                  <a  class="dropdown-item" routerLink="/update-password">
+                    Change password </a>
+                </div>
+              </li>
+          <li class="nav-item "><a class="nav-link " routerLink="/logout">Logout </a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <br>
+
+
+
+  <div class="container">
+    <div class="alert alert-danger" *ngIf="errorOccurred">
+      <strong> Error!! Error message:- {{errorMessage}}</strong>
+    </div>
+    <div class="card rounded-0">
+      <div class="card-header">
+        <h3 class="mb-0">Add New Expense</h3>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm">
+
+          <div class="form-group">
+            <label for="title" class="control-label">Title of the Expense:</label>
+            <input class="form-control" [(ngModel)]="title" name="title" type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="date" class="control-label"> Date<span>*</span>:</label>
+            <div class="inputWithIcon">
+              <input class="form-control " [(ngModel)]="date" #Date="ngModel" name="date" type="text" [bsConfig]="datePickerConfig"
+                bsDatepicker required>
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+
+            <span class="help-block" *ngIf="Date.errors && Date.touched 
+       && Date.errors.required || form.submitted && Date.invalid">
+              <br>Date is required.
+            </span>
+            <br>
+          </div>
+
+          <div class="form-group">
+            <label for="amount" class="control-label"> Amount<span>*</span>:</label>
+
+            <div class="inputWithIcon">
+              <input class="form-control"  appAmountValidator [(ngModel)]="amount" 
+               #Amount="ngModel" name="amount" type="number"  required>
+              <i class="fa fa-inr" aria-hidden="true"></i>
+
+            </div>
+            <span class="help-block" *ngIf="Amount.errors && Amount.touched && Amount.pristine
+            && Amount.errors.required || form.submitted && Amount.errors && Amount.errors.required ">
+              <br>Amount is required.
+            </span>
+
+            <span class="help-block" *ngIf="Amount.touched && Amount.errors && Amount.errors.notValid
+            || form.submitted && Amount.errors && Amount.errors.notValid ">
+              <br>Amount is not valid.
+              <br><small>(Required in the positive number format like : 10 , 0.1 , 0.001 , 1500.700)</small>
+              <small> &nbsp;(Cannot accept in the format like : -12 , -1.01 , +2.3)</small>
+            </span>
+
+          </div>
+
+          <div class="form-group">
+            <label for="CategoryName" class="control-label"> Category<span>*</span>:</label>
+            <input type="text" list="categories" class="form-control" #category="ngModel" name="CategoryName"
+              [(ngModel)]="categoryName" id="CategoryName" required minlength="2" />
+
+            <datalist id="categories">
+              <option *ngFor="let x of allCategoryNames ; let i = index">{{ x }}</option>
+            </datalist>
+
+            <span class="help-block" *ngIf="category.errors && category.touched 
+              && category.errors.required || form.submitted && category.errors && category.errors.required">
+              <br>Category is required.
+            </span>
+
+            <span class="help-block" *ngIf="category.errors 
+              && category.errors.minlength">
+              <br>Category should be atleast 2 characters.
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="description" class="control-label">Description : </label>
+            <input class="form-control" [(ngModel)]="description" name="description" type="text">
+            <br>
+          </div>
+
+          <div class="form-group">
+            <button #btn class="btn btn-primary" (click)="onAddExpense()" data-toggle="popover" data-trigger="hover"
+              title="It will add this expense information.">
+              <i class="fa fa-plus" aria-hidden="true"></i> Add</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div><br>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <nav class="nav navbar-expand-lg navbar-light">
+
+      </nav>
+    </div>
+  </div>
+  </div>
