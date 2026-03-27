@@ -1,0 +1,140 @@
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-12">
+            <nav class="nav navbar-expand-lg navbar-light" >
+               <div class="navbar-header">
+               <a class="navbar-brand" >Expense Manager</a>
+               </div>
+                <ul class="nav nav-pills" >
+                    <li class="nav-item " ><a class = "nav-link " routerLink="/dashboard">Go to dashboard </a></li>
+                    <li class="nav-item " ><a class = "nav-link " routerLink="/add-expense">Add new expense </a></li>
+                    <li class="nav-item " ><a class = "nav-link" routerLink="/view-all-expenses">View all expenses </a> </li>
+                    <li class="nav-item " ><a class = "nav-link" routerLink="/mailSummary">Mail Summary </a></li>
+                  </ul> 
+                 <ul class="nav nav-pills ml-auto" >
+                        <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                              <i class="fa fa-user" aria-hidden="true"></i> User Management
+                          </a>
+                          <div class="dropdown-menu">
+                             <a class="dropdown-item" routerLink="/update-userInfo">
+                               Change userInfo </a>
+                            <a  class="dropdown-item" routerLink="/update-password">
+                              Change password </a>
+                          </div>
+                        </li>
+                   
+                      <li class="nav-item " ><a class = "nav-link " routerLink="/logout">Logout </a></li>
+                 </ul> 
+           </nav>
+           </div>
+         </div>
+      
+         
+        <br>
+       
+            
+            <div class="alert alert-danger" *ngIf="errorOccurred" >
+                <strong>Error!! Error message from Server:- {{errorMessage}}</strong>
+          </div>
+       
+          <div class="card rounded-0 " >
+            <div class="card-header">
+              <h3 class="mb-0">Dashboard</h3>
+            </div>
+            <ul class="nav nav-tabs justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/dashboard" routerLinkActive="active" >Yearly Report</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link"  routerLink="/monthly-report" routerLinkActive="active" >Monthly Report</a>
+                </li>
+            </ul>
+            <br>
+            <p> Report of the month {{month}}</p>
+            <div class="card-body">
+              
+            <div style="display: block">
+                <canvas *ngIf="show" baseChart
+                        [data]="pieChartData"
+                        [labels]="pieChartLabels"
+                        [chartType]="pieChartType"
+                        (chartHover)="chartHovered($event)"
+                        (chartClick)="chartClicked($event)"></canvas>
+              </div>
+                Click here to see report of that month:-
+                <button type="button" name="JAN" class="btn btn-primary" (click) = "onclick('JAN')" data-toggle="modal" data-target="#exampleModal">
+                    JAN
+                  </button> &nbsp; &nbsp;
+                <button type="button" name="FEB" class="btn btn-primary" (click) = "onclick('FEB')" data-toggle="modal" data-target="#exampleModal">
+                    FEB
+                </button>&nbsp; &nbsp;
+                <button type="button" name="MAR" class="btn btn-primary" (click) = "onclick('MAR')" data-toggle="modal" data-target="#exampleModal">
+                    MAR
+                 </button>&nbsp; &nbsp;
+                <button type="button" name="APR" class="btn btn-primary" (click) = "onclick('APR')" data-toggle="modal" data-target="#exampleModal">
+                    APR
+                </button>&nbsp; &nbsp;
+                <button type="button" name="MAY" class="btn btn-primary" (click) = "onclick('MAY')" data-toggle="modal" data-target="#exampleModal">
+                    MAY
+                </button>&nbsp; &nbsp;
+                <button type="button" name="JUN" class="btn btn-primary" (click) = "onclick('JUN')" data-toggle="modal" data-target="#exampleModal">
+                    JUN
+                </button>&nbsp; &nbsp;
+                <button type="button" name="JUL" class="btn btn-primary" (click) = "onclick('JUL')" data-toggle="modal" data-target="#exampleModal">
+                    JUL
+                </button>&nbsp; &nbsp;
+                <button type="button" name="AUG" class="btn btn-primary" (click) = "onclick('AUG')" data-toggle="modal" data-target="#exampleModal">
+                    AUG
+                </button>&nbsp; &nbsp;
+                <button type="button" name="SEP" class="btn btn-primary" (click) = "onclick('SEP')" data-toggle="modal" data-target="#exampleModal">
+                    SEP
+                </button>&nbsp; &nbsp;
+                <button type="button" name="OCT" class="btn btn-primary" (click) = "onclick('OCT')" data-toggle="modal" data-target="#exampleModal">
+                    OCT
+                </button>&nbsp; &nbsp;
+                <button type="button" name="NOV" class="btn btn-primary" (click) = "onclick('NOV')" data-toggle="modal" data-target="#exampleModal">
+                    NOV
+                </button>&nbsp; &nbsp;
+                <button type="button" name="DEC" class="btn btn-primary" (click) = "onclick('DEC')" data-toggle="modal" data-target="#exampleModal">
+                    DEC
+                </button>&nbsp; &nbsp;
+               
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel" >Monthly report</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          
+                          <table class="table table-sm table-bordered" *ngIf="show">
+                              <thead>
+                                <tr>
+                                  <th >Categories</th>
+                                  <th >Amount</th>
+                               </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor = "let element of elementList">
+                                      <td > {{ element.key }}  </td>
+                                      <td >{{ element.value }}</td>
+                                  </tr>
+                                  </tbody>
+                            </table>
+                            Total Expenditure : {{ totalExpenditure}}/-
+                        </div>
+                        <div class="modal-footer">
+                          
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+       
+             </div>
+      </div>

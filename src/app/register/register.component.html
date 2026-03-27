@@ -1,0 +1,111 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="container-fluid">
+<title> Registration of user.</title>
+<div>
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+              <nav class="nav navbar-expand-lg navbar-light" >
+                 <div class="navbar-header">
+                 <a class="navbar-brand " (click)="onhome()">Expense Manager</a>
+                 </div>
+                       <ul class="nav nav-pills ml-auto" >
+                       <li class="nav-item " ><a class = "nav-link " routerLink="/login">Login </a></li>
+                       <li  class="nav-item"><a class ="nav-link "  routerLink="/register">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></li>
+                       </ul> 
+             </nav>
+             </div>
+           </div>
+ <br>
+
+  <div>
+      <div class="container" >
+          <div class="alert alert-danger" *ngIf="errorOccurred" >
+              <strong> Error! Error message:- {{errorMessage}}</strong>
+          </div>
+          <div class="card rounded-0">
+              <div class="card-header">
+                <h3 class="mb-0">Register User</h3>
+              </div>
+              <div class="card-body">
+    <form #form="ngForm">
+      
+      <div class="form-group">
+        <label for="firstName" class="control-label">First Name:</label>
+        
+        <input class="form-control" [(ngModel)]="firstName" name="firstName" type="text">
+      <br>
+      </div>
+
+      <div class="form-group">
+        <label for="lastName" class="control-label"> Last Name:</label>
+        <input class="form-control" [(ngModel)]="lastName" name="lastName" type="text">
+        <br>
+      </div>
+
+      <div class="form-group" [class.has-error]="emailId.invalid && emailId.touched"
+        [class.has-success]="emailId.valid">
+        
+        <label for="email" class="control-label"> Email Id <span>*</span>:&nbsp; &nbsp; </label>
+        
+        <input class="form-control" [(ngModel)]="email" email #emailId="ngModel" name="emailId" type="text" required>
+       
+        <span class="help-block" *ngIf="emailId.errors && emailId.errors.required && emailId.touched
+        ||form.submitted && emailId.errors && emailId.errors.required ">
+          <br>&nbsp; &nbsp;Email is required.
+        </span>
+       
+        <span class="help-block" *ngIf="emailId.errors && emailId.errors.email && emailId.touched">
+         <br>Email is invalid.
+        </span>
+        <br>
+      
+      </div>
+      
+      <div class="form-group">
+        
+        <label for="password" class="control-label">Password <span>*</span>: </label>
+     
+        <div class="inputWithIcon">
+            <input class="form-control" [(ngModel)]="password" name="password" type="password" required #pass="ngModel" minlength = "6">
+            <i class="fa fa-lock" aria-hidden="true"></i>
+        </div>
+    
+        
+        <span class="help-block" *ngIf="pass.errors && pass.errors.required && pass.touched 
+        || form.submitted && pass.errors && pass.errors.required">
+           <br> &nbsp;Password is required.
+        </span>
+        
+        <span class="help-block" *ngIf="pass.errors && pass.errors.minlength 
+        || form.submitted && pass.errors && pass.errors.minlength">
+           <br>Password should be atleast 6 characters.
+        </span>
+        <br>
+      
+      </div>
+  
+    <button class="btn btn-primary" (click)="onClick()"><i class="fa fa-bars" aria-hidden="true"></i>
+      Register </button>
+    </form>
+    </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-lg-12">
+        <nav class="nav navbar-expand-lg navbar-light" >
+
+          
+                 <ul class="nav navbar-nav ml-auto" >
+                 <li class="nav-item " ><a class = "nav-link " href="#">Contact </a></li>
+                 <li  class="nav-item"><a class ="nav-link "  href="#">Social</a></li>
+                 </ul> 
+          
+        
+       </nav>
+       </div>
+       
+</div>
+</div>
+</div>

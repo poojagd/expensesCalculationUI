@@ -1,0 +1,23 @@
+nav{
+    background-color: #e3f2fd
+}
+
+well{
+    background-color: aqua;
+    align-self: center;
+   
+}
+table{
+    align-self: center;
+}
+.col-lg-12{
+    padding-left: 0%;
+    padding-right: 0%;
+}
+a.dropdown-item:hover{
+    background-color:#91d9fa;
+}
+.dropdown-menu{
+    background-color: #91d9fa;
+}
+  

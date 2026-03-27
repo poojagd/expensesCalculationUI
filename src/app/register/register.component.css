@@ -1,0 +1,29 @@
+h1{
+    text-align:center; 
+    color:darkslateblue;
+}
+
+span{
+    color :red;
+}
+nav{
+    background-color: #e3f2fd
+}
+
+.inputWithIcon input[type=password]{
+    padding-left: 40px;
+}
+.inputWithIcon {
+    position: relative;
+}
+.inputWithIcon i{
+    position: absolute;
+    right:0;
+    top :8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+.col-lg-12{
+    padding-left: 0%;
+    padding-right: 0%;
+}
